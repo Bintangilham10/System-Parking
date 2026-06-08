@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "author": "Codex",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": -187.2, "left": -217.6, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-hc-sr04", "id": "ultra", "top": -180.9, "left": 158.9, "attrs": { "distance": "80" } },
+    { "type": "wokwi-servo", "id": "servo", "top": 154.6, "left": 169.9, "attrs": { "hornColor": "blue" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 236.4, "left": -171, "attrs": { "volume": "0.1" } },
+    { "type": "wokwi-led", "id": "ledGreen", "top": 168, "left": -190, "attrs": { "color": "green" } },
+    { "type": "wokwi-led", "id": "ledRed", "top": 168, "left": -142, "attrs": { "color": "red" } },
+    { "type": "wokwi-pushbutton", "id": "btnSlot1", "top": 323, "left": -220, "attrs": { "color": "blue", "label": "SLOT1" } },
+    { "type": "wokwi-pushbutton", "id": "btnSlot2", "top": 323, "left": -130, "attrs": { "color": "blue", "label": "SLOT2" } },
+    { "type": "wokwi-pushbutton", "id": "btnEntry", "top": 323, "left": -40, "attrs": { "color": "green", "label": "ENTRY" } },
+    { "type": "wokwi-pushbutton", "id": "btnExit", "top": 323, "left": 50, "attrs": { "color": "green", "label": "EXIT" } },
+    { "type": "wokwi-pushbutton", "id": "btnFault", "top": 323, "left": 140, "attrs": { "color": "red", "label": "FAULT" } },
+    { "type": "wokwi-pushbutton", "id": "btnReset", "top": 323, "left": 230, "attrs": { "color": "yellow", "label": "RESET" } }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+
+    [ "esp:D21", "lcd:SDA", "green", [] ],
+    [ "esp:D22", "lcd:SCL", "green", [] ],
+    [ "esp:VIN", "lcd:VCC", "red", [] ],
+    [ "esp:GND.1", "lcd:GND", "black", [] ],
+
+    [ "esp:D5", "ultra:TRIG", "green", [] ],
+    [ "esp:D18", "ultra:ECHO", "violet", [] ],
+    [ "esp:VIN", "ultra:VCC", "red", [] ],
+    [ "esp:GND.1", "ultra:GND", "black", [] ],
+
+    [ "esp:D19", "servo:PWM", "orange", [] ],
+    [ "esp:VIN", "servo:V+", "red", [] ],
+    [ "esp:GND.2", "servo:GND", "black", [] ],
+
+    [ "esp:D23", "buzzer:1", "purple", [] ],
+    [ "esp:GND.2", "buzzer:2", "black", [] ],
+
+    [ "esp:D4", "ledGreen:A", "green", [] ],
+    [ "esp:GND.2", "ledGreen:C", "black", [] ],
+    [ "esp:D2", "ledRed:A", "red", [] ],
+    [ "esp:GND.2", "ledRed:C", "black", [] ],
+
+    [ "btnSlot1:1.r", "esp:D32", "blue", [] ],
+    [ "btnSlot1:2.r", "esp:GND.1", "black", [] ],
+    [ "btnSlot2:1.r", "esp:D33", "blue", [] ],
+    [ "btnSlot2:2.r", "esp:GND.1", "black", [] ],
+    [ "btnEntry:1.r", "esp:D25", "green", [] ],
+    [ "btnEntry:2.r", "esp:GND.1", "black", [] ],
+    [ "btnExit:1.r", "esp:D26", "green", [] ],
+    [ "btnExit:2.r", "esp:GND.1", "black", [] ],
+    [ "btnFault:1.r", "esp:D27", "red", [] ],
+    [ "btnFault:2.r", "esp:GND.1", "black", [] ],
+    [ "btnReset:1.r", "esp:D14", "yellow", [] ],
+    [ "btnReset:2.r", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
