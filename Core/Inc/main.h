@@ -67,6 +67,7 @@ void Error_Handler(void);
 #define IR_ENTRY_GPIO_Port GPIOA
 #define IR_EXIT_Pin GPIO_PIN_3
 #define IR_EXIT_GPIO_Port GPIOA
+#define IR_EXIT_EXTI_IRQn EXTI3_IRQn
 #define sensor_safety_Pin GPIO_PIN_2
 #define sensor_safety_GPIO_Port GPIOB
 #define LED_RED_Pin GPIO_PIN_12
